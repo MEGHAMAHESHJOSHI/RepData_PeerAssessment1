@@ -1,3 +1,4 @@
+
 # Reproducible Research: Peer Assessment 1
 
 
@@ -30,6 +31,7 @@ activityData <- read.csv('activity.csv')
 
 ```{r}
 stepsByDay <- tapply(activityData$steps, activityData$date, sum, na.rm=TRUE)
+
 ```
 
 ##### 1. Histogram of the total number of steps taken each day
@@ -129,6 +131,7 @@ activityDataImputed$dateType <-  ifelse(as.POSIXlt(activityDataImputed$date)$wda
 
 ```{r}
 averagedActivityDataImputed <- aggregate(steps ~ interval + dateType, data=activityDataImputed, mean)
+
 ggplot(averagedActivityDataImputed, aes(interval, steps)) + 
     geom_line() + 
     facet_grid(dateType ~ .) +
